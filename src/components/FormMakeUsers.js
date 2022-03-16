@@ -3,7 +3,7 @@ import RadioButton from "./RadioButton.js";
 
 function FormMakeUsers(props) {
   const [userName, setUserName] = useState();
-  const [favorite, setFavorite] = React.useState(" ");
+  const [favorite, setFavorite] = React.useState("");
 
   const handleMaleChange = () => {
     setFavorite("Male");
@@ -18,7 +18,7 @@ function FormMakeUsers(props) {
   return (
     <form>
       <h1 className='title'>Make User Great Again</h1>
-      <div className='name'>
+      <div className='userName'>
         <p>User name |</p>
         <input
           type='text'
@@ -26,7 +26,7 @@ function FormMakeUsers(props) {
           onChange={(event) => setUserName(event.target.value)}
         ></input>
       </div>
-      <div className='gender'>
+      <div className='userGender'>
         <p>User gender |</p>
         <RadioButton
           label='Male'
@@ -44,7 +44,11 @@ function FormMakeUsers(props) {
           onChange={handleOtherChange}
         />
       </div>
-      <input type='button' value='Save'></input>
+      <input
+        type='submit'
+        value='Save'
+        disabled={userName && favorite ? false : true}
+      ></input>
     </form>
   );
 }
