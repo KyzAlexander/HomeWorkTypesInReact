@@ -3,7 +3,7 @@ import RadioButton from "./RadioButton.js";
 
 function FormMakeUsers(props) {
   const [userName, setUserName] = useState();
-  const [favorite, setFavorite] = React.useState("");
+  const [favorite, setFavorite] = React.useState(null);
 
   const handleMaleChange = () => {
     setFavorite("Male");
@@ -61,7 +61,7 @@ function FormMakeUsers(props) {
           type='submit'
           value='Save'
           disabled={userName && favorite ? false : true}
-          onClick={clickButtonSave}
+          onChange={clickButtonSave}
         ></input>
       </form>
       {/* --- */}
