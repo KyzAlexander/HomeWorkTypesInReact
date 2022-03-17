@@ -4,16 +4,8 @@ import RadioButton from "./RadioButton.js";
 function FormMakeUsers(props) {
   const [userName, setUserName] = useState();
   const [favorite, setFavorite] = React.useState(null);
+  const genders = ["Male", "Female", "Other"];
 
-  const handleMaleChange = () => {
-    setFavorite("Male");
-  };
-  const handleFemaleChange = () => {
-    setFavorite("Female");
-  };
-  const handleOtherChange = () => {
-    setFavorite("Other");
-  };
   //---
   // const obj = { name: userName, gender: favorite };
   //---
@@ -41,21 +33,13 @@ function FormMakeUsers(props) {
         </div>
         <div className='userGender'>
           <p>User gender |</p>
-          <RadioButton
-            label='Male'
-            value={favorite === "Male"}
-            onChange={handleMaleChange}
-          />
-          <RadioButton
-            label='Female'
-            value={favorite === "Female"}
-            onChange={handleFemaleChange}
-          />
-          <RadioButton
-            label='Other'
-            value={favorite === "Other"}
-            onChange={handleOtherChange}
-          />
+          {genders.map((item) => (
+            <RadioButton
+              label={item}
+              value={favorite === item}
+              onChange={() => setFavorite(item)}
+            />
+          ))}
         </div>
         <input
           type='submit'
