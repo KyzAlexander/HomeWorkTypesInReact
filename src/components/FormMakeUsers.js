@@ -1,21 +1,21 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import RadioButton from "./RadioButton.js";
 
 function FormMakeUsers(props) {
   const [userName, setUserName] = useState();
   const [favorite, setFavorite] = React.useState(null);
-  const genders = ["Male", "Female", "Other"];
+  const genders = string[("Male", "Female", "Other")];
 
   //---
   // const obj = { name: userName, gender: favorite };
   //---
+
   const [userList, setUserList] = useState([]);
+  // const inputRef = useRef();
 
   const clickButtonSave = () => {
-    setUserList(() => {
-      userList.push({ name: userName, gender: favorite });
-      // user = user.name;
-      // console.log(userCards);
+    setUserList((prevState) => {
+      return [...prevState, { name: userName, gender: favorite }];
     });
   };
 
@@ -47,9 +47,16 @@ function FormMakeUsers(props) {
           disabled={userName && favorite ? false : true}
           onChange={clickButtonSave}
         ></input>
+        {/* <button
+          // value={userName}
+          // disabled={userName && favorite ? false : true}
+          onChange={clickButtonSave}
+        >
+          Save
+        </button> */}
       </form>
       {/* --- */}
-      <div>{userList}</div>
+      <div></div>
       {/* --- */}
     </>
   );
