@@ -4,7 +4,7 @@ import RadioButton from "./RadioButton.js";
 function FormMakeUsers(props) {
   const [userName, setUserName] = useState();
   const [favorite, setFavorite] = React.useState(null);
-  const genders = string[("Male", "Female", "Other")];
+  const genders = ["Male", "Female", "Other"];
 
   //---
   // const obj = { name: userName, gender: favorite };
@@ -14,24 +14,32 @@ function FormMakeUsers(props) {
   // const inputRef = useRef();
 
   const clickButtonSave = () => {
-    setUserList((prevState) => {
-      return [...prevState, { name: userName, gender: favorite }];
+    setUserList((userList) => {
+      return [...userList, { name: userName, gender: favorite }];
     });
   };
+  let res = userList.map((item) => {
+    return (
+      <div>
+        <p>{item.name} </p>
+        <p>{item.gender} </p>
+      </div>
+    );
+  });
 
   return (
     <>
       <form>
-        <h1 className='title'>Make User Great Again</h1>
-        <div className='userName'>
+        <h1 className="title">Make User Great Again</h1>
+        <div className="userName">
           <p>User name |</p>
           <input
-            type='text'
+            type="text"
             value={userName}
             onChange={(event) => setUserName(event.target.value)}
           ></input>
         </div>
-        <div className='userGender'>
+        <div className="userGender">
           <p>User gender |</p>
           {genders.map((item) => (
             <RadioButton
@@ -42,8 +50,8 @@ function FormMakeUsers(props) {
           ))}
         </div>
         <input
-          type='submit'
-          value='Save'
+          type="submit"
+          value="Save"
           disabled={userName && favorite ? false : true}
           onChange={clickButtonSave}
         ></input>
@@ -56,7 +64,7 @@ function FormMakeUsers(props) {
         </button> */}
       </form>
       {/* --- */}
-      <div></div>
+      <div>{res}</div>
       {/* --- */}
     </>
   );
