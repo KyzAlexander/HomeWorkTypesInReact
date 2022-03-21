@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
-import RadioButton from "./RadioButton.js";
+import RadioButton from "./RadioButton";
+import { nanoid } from "nanoid";
 
 function FormMakeUsers(props) {
   const [userName, setUserName] = useState();
@@ -15,7 +16,10 @@ function FormMakeUsers(props) {
 
   const clickButtonSave = () => {
     setUserList((userList) => {
-      return [...userList, { name: userName, gender: favorite }];
+      return [
+        ...userList,
+        { name: userName, gender: favorite, id: nanoid(10) },
+      ];
     });
   };
   let res = userList.map((item) => {
@@ -23,6 +27,7 @@ function FormMakeUsers(props) {
       <div>
         <p>{item.name} </p>
         <p>{item.gender} </p>
+        <p>{item.id} </p>
       </div>
     );
   });
@@ -30,16 +35,16 @@ function FormMakeUsers(props) {
   return (
     <>
       <form>
-        <h1 className="title">Make User Great Again</h1>
-        <div className="userName">
+        <h1 className='title'>Make User Great Again</h1>
+        <div className='userName'>
           <p>User name |</p>
           <input
-            type="text"
+            type='text'
             value={userName}
             onChange={(event) => setUserName(event.target.value)}
           ></input>
         </div>
-        <div className="userGender">
+        <div className='userGender'>
           <p>User gender |</p>
           {genders.map((item) => (
             <RadioButton
@@ -50,8 +55,8 @@ function FormMakeUsers(props) {
           ))}
         </div>
         <input
-          type="submit"
-          value="Save"
+          type='submit'
+          value='Save'
           disabled={userName && favorite ? false : true}
           onChange={clickButtonSave}
         ></input>
