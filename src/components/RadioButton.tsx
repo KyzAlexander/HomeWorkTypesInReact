@@ -1,4 +1,4 @@
-export default function RadioButton({ label, value, onChange }) {
+export default function RadioButton({ label, value, onChange }: any) {
   return (
     <label>
       {label}
