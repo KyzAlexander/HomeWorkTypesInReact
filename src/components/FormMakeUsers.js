@@ -14,7 +14,8 @@ function FormMakeUsers(props) {
   const [userList, setUserList] = useState([]);
   // const inputRef = useRef();
 
-  const clickButtonSave = () => {
+  const clickButtonSave = (event) => {
+    event.preventDefault(); // снимает дэфолтное значение
     setUserList((userList) => {
       return [
         ...userList,
@@ -35,16 +36,16 @@ function FormMakeUsers(props) {
   return (
     <>
       <form>
-        <h1 className='title'>Make User Great Again</h1>
-        <div className='userName'>
+        <h1 className="title">Make User Great Again</h1>
+        <div className="userName">
           <p>User name |</p>
           <input
-            type='text'
+            type="text"
             value={userName}
             onChange={(event) => setUserName(event.target.value)}
           ></input>
         </div>
-        <div className='userGender'>
+        <div className="userGender">
           <p>User gender |</p>
           {genders.map((item) => (
             <RadioButton
@@ -55,10 +56,10 @@ function FormMakeUsers(props) {
           ))}
         </div>
         <input
-          type='submit'
-          value='Save'
+          type="submit"
+          value="Save"
           disabled={userName && favorite ? false : true}
-          onChange={clickButtonSave}
+          onClick={clickButtonSave}
         ></input>
         {/* <button
           // value={userName}
