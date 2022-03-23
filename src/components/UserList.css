@@ -1,0 +1,11 @@
+.totalUsers {
+  margin-top: 10px;
+  font-weight: 500;
+}
+p {
+  font-weight: 500;
+}
+li {
+  margin-top: 5px;
+  border: solid;
+}
