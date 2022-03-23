@@ -13,16 +13,14 @@ function FormMakeUsers() {
 
   const clickButtonSave = (event: any) => {
     event.preventDefault(); // снимает дэфолтное значение
-    setUserName("");
-    // <RadioButton checked={false} />;
-     
+    setUserName("");    
+    setFavorite("")
     setUserList((userList) => {
       return [
         ...userList,
         { name: userName, gender: favorite, id: nanoid(10) },
       ];
-    });
-    // return <RadioButton checked={false} />;
+    });    
   };
 
   return (
@@ -56,6 +54,7 @@ function FormMakeUsers() {
       </form>
 
       <UserList users={userList} />
+     
     </>
   );
 }

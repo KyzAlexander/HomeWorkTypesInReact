@@ -1,31 +1,80 @@
 import React from "react";
-type User = {users: {name: string, gender: string, id: string}[]}
+// type User = {props:{name: string, gender: string, id: string}[]} // без ошибок
+interface User {users: {name: string, gender: string, id: string}[]}
 
-const UserList: React.FC<User> = ({ users }) => {
-  if (users.length) {
-    users.map((item) => {
+// const UserList: React.FC<User> = ({ props }) => { // без ошибок
+  const UserList = ({users}: User) => { 
+    
+    // const users = {props};
+  // if (props.length) {
+  //   props.map((item) => {
+  //     return (
+  //       <div>
+  //         Total users: {props.length}
+  //         <ul>
+  //           <li>
+  //             <p> User name:</p>
+  //             {item.name}
+  //           </li>
+  //           <li>
+  //             <p> User gender:</p>
+  //             {item.gender}
+  //           </li>
+  //           <li>
+  //             <p> User id:</p>
+  //             {item.id}
+  //           </li>
+  //         </ul>
+  //       </div>
+  //     );
+  //   });
+  // } else {
+  //   return <div>No users</div>;
+  // }
+  if (users.length) {    
+    // let arr = Object.values(users).map((item: any) => <div>{item}</div>)
+      // return (
+      //   <div>
+      //     Total users: {users.length}
+      //     <ul>
+      //       <li>
+      //         <p> User name:</p>              
+      //         {users.map((item: any) => {item.name})}
+      //       </li>
+      //       <li>
+      //         <p> User gender:</p>              
+      //         {users.map((item: any) => <div>{item.gender}</div>)}
+      //       </li>
+      //       <li>
+      //         <p> User id:</p>              
+      //         {users.map((item: any) => <div>{item.id}</div>)}
+      //       </li>
+      //     </ul>
+      //   </div>
+      // );
       return (
+        <>
         <div>
           Total users: {users.length}
-          <ul>
+        </div>
+        <ul> 
+          {users.map((item: any) => 
             <li>
-              <p> User name:</p>
+              <p> User name:</p>              
               {item.name}
-            </li>
-            <li>
-              <p> User gender:</p>
+              <p> User gender:</p>              
               {item.gender}
-            </li>
-            <li>
-              <p> User id:</p>
+              <p> User id:</p>              
               {item.id}
             </li>
-          </ul>
-        </div>
-      );
-    });
+          )}
+         
+        </ul>
+          
+        </>
+      );   
   } else {
-    return <div>No users</div>;
+    return <p>No users</p>;
   }
  
 }
