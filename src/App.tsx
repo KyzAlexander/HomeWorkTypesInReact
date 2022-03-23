@@ -2,8 +2,7 @@ import "./App.css";
 import FormMakeUsers from "./components/FormMakeUsers";
 
 
-function App() {
-  // const [userList, setUserList] = useState([]);
+function App() {  
   return (
     <div className='App'>
       <FormMakeUsers />      
