@@ -1,9 +1,9 @@
 import React from "react";
 import './UserList.css'
 
-interface User {users: {name: string, gender: string, id: string}[]}
+interface UserListProps {users: {name: string, gender: string, id: string}[]}
 
-  const UserList = ({users}: User) => {    
+  const UserList = ({users}: UserListProps) => {    
   if (users.length) {  
       return (
         <>
@@ -29,4 +29,4 @@ interface User {users: {name: string, gender: string, id: string}[]}
   } 
 }
 
-export default UserList;
+export default React.memo(UserList);

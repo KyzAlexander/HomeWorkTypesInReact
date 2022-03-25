@@ -1,4 +1,5 @@
-export default function RadioButton({ label, value, onChange }: any) {
+import React from "react";
+ function RadioButton({ label, value, onChange }: any) {
   return (
     <label>
       {label}
@@ -6,3 +7,4 @@ export default function RadioButton({ label, value, onChange }: any) {
     </label>
   );
 }
+export default React.memo(RadioButton)
